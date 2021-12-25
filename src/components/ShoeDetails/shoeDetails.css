@@ -1,0 +1,18 @@
+.details-container {
+    position: relative;
+}
+
+.edit-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+}
+.back-btn {
+    position: absolute;
+    bottom: 10vh;
+    right: 10vw;
+    background-color: transparent;
+    border: none;
+}

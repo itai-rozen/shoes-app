@@ -1,12 +1,15 @@
 import React from 'react'
 import shoeApi from './../../api'
+import { Link } from 'react-router-dom'
 import './form.css'
+import BackButton from '../BackButton/BackButton'
 
 export default class Form extends React.Component {
-    state = { shoeName: '',description: '', price: '', shoeImg:'', error: '', isLoading: false }
+    state = { id:'',shoeName: '',description: '', price: '', shoeImg:'', error: '', isLoading: false, isSuccess: false }
 
     setNewShoe = e => {
         const { id, value } = e.target
+        this.setState({isSuccess: false})
         this.setState({ [id]: value })
     }
     showErrMessage = msg => {
@@ -14,7 +17,7 @@ export default class Form extends React.Component {
         setTimeout(() => this.setState({error: ''}), 1500)
     } 
     submitForm = async e => {
-        const {shoeName, description, price, shoeImg} = this.state
+        const {shoeName, description, price, shoeImg,id} = this.state
         e.preventDefault()
         if (!shoeName){
             this.showErrMessage('name must contain at least one character')
@@ -26,13 +29,23 @@ export default class Form extends React.Component {
         }
         try {
             this.setState({isLoading:true})
-            await shoeApi.addShoe({shoeName, description, price, shoeImg})
+            if (this.props.formAction === 'add'){
+                await shoeApi.addShoe({shoeName, description, price, shoeImg})
+            } else {
+                await shoeApi.editShoe(id, {shoeName, description, price, shoeImg})
+            }
             this.props.updateState()
-            this.setState({isLoading:false})
-            // add a function that takes you back to homepage automatically
+            this.setState({isLoading:false, isSuccess:true})
             // add spinner
         } catch (err) {
             this.setState({ error: err.message })
+        }
+    }
+
+    componentDidMount = () => {
+        if (this.props.shoe){
+            const { shoeName, description, price, shoeImg, id} = this.props.shoe
+            this.setState({id: id, shoeName: shoeName, description: description, price:price, shoeImg: shoeImg})
         }
     }
 
@@ -50,9 +63,10 @@ export default class Form extends React.Component {
                 <label htmlFor="price">Price</label>
                 <input onChange={this.setNewShoe} value={this.state.price} type="number" name="" id="price" />
                 <label htmlFor="shoeImg">Image Url</label>
-                <input onChange={this.setNewShoe} value={this.state.shoeImage} id="shoeImg" type="text" />
+                <input onChange={this.setNewShoe} value={this.state.shoeImg} id="shoeImg" type="text" />
                 <input disabled={this.state.isLoading} type="submit" value={this.props.formAction} />
             </form>
+            {this.state.isSuccess && <h1>Shoe {this.props.formAction}ed! <Link  to="/">Back to homapage</Link> </h1>}
         </div>
 
     }

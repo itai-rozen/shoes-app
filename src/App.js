@@ -36,8 +36,8 @@ class App extends React.Component {
         <Nav shoes={this.state.shoes} shoesInCart={this.state.shoesInCart} setQuery={this.setQuery} />
         <Routes>
           <Route path="/" element={<Homepage shoes={this.state.shoes} query={this.state.query} updateState={this.updateState} error={this.state.error} />} />
-          <Route path="/:id" element={<DetailsWrapper />} />
-          <Route path="/add" element={<Add updateState={this.updateState} />} />
+          <Route path="/:id" element={<DetailsWrapper updateState={this.updateState} shoes={this.state.shoes} />} />
+          <Route navigate="/" path="/add" element={<Add updateState={this.updateState} />} />
         </Routes>
         </BrowserRouter>
       </div>
