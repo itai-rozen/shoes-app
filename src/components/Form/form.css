@@ -1,0 +1,25 @@
+.form-container {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+.shoe-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px 100px;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-size: 2rem;
+    padding: 15px;
+}
+
+.shoe-form input {
+    padding: 10px 13px;
+    margin: 5px 0;
+}
+
+.error-header {
+    text-align: center;
+    color: red;
+}

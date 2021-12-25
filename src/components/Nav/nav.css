@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+nav img {
+    height: 50px;
+}
+.logo-header {
+    font-family: 'Rock 3D', cursive;;
+}
+
+nav i:hover {
+    color: #91818A;
+}
