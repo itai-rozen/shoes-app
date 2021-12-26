@@ -22,6 +22,7 @@
 .shoe-img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .shoe-card:hover .shoe-img {
@@ -36,4 +37,11 @@
 
 .delete-btn:hover {
     color: #91818A;
+}
+
+p.details-container {
+    height: 40px;
+}
+p.details-container:hover {
+    font-size: 1.1rem;
 }

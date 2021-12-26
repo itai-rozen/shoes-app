@@ -20,9 +20,11 @@ export default class ShoeList extends React.Component{
                 </div>
                 <p>{shoeName}</p>
                 <button onClick={() => this.deleteShoe(id)} className="delete-btn"><i className="fas fa-trash-alt fa-2x"></i></button>
+                <p className='details-container'>
                 <Link to={`/${id}`}>
                     see more details
                 </Link>
+                </p>
 
             </div>
         })

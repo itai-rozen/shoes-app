@@ -1,5 +1,23 @@
-.details-container {
+.shoe-details-container {
     position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+}
+
+.shoe-details-container img{
+    height: 60%;
+    border-radius: 15px;
+} 
+
+.shoe-details-container button {
+    font-size: 2rem;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 50%;
 }
 
 .edit-form {
@@ -15,4 +33,9 @@
     right: 10vw;
     background-color: transparent;
     border: none;
+}
+
+.home-link {
+    align-self: flex-end;
+    margin: 30px;
 }
