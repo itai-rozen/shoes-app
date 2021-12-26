@@ -2,7 +2,7 @@ import axios from 'axios'
 const axiosUrl = axios.create({
     baseURL: 'https://61c4eb78f1af4a0017d9987f.mockapi.io/shoes'
 })
-export default class {
+export default class Api {
     static getShoes = () =>  axiosUrl.get()
 
     static addShoe = shoeObj => axiosUrl.post('/',shoeObj)
