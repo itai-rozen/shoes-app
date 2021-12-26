@@ -35,7 +35,6 @@ export default class Form extends React.Component {
             }
             this.props.updateState()
             this.setState({isLoading:false, isSuccess:true})
-            // add spinner
         } catch (err) {
             this.setState({ error: err.message })
         }
@@ -50,9 +49,9 @@ export default class Form extends React.Component {
 
 
 
-    render() {
-        {this.state.isLoading && <h1>Loading...</h1>}
+    render() { 
         if (this.state.error) return <h1 className='error-header'>{this.state.error}</h1>
+        else if (this.state.isLoading) return <h1>Loading...</h1>
         else return <div className='form-container'>
             <form className='shoe-form' onSubmit={this.submitForm}>
                 <label htmlFor="shoeName">Shoe Name</label>
