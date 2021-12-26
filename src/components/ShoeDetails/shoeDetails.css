@@ -1,4 +1,5 @@
 .shoe-details-container {
+    margin-top: 10px;
     position: relative;
     height: 80vh;
     display: flex;
@@ -20,6 +21,8 @@
     border-radius: 50%;
 }
 
+
+
 .edit-form {
     position: absolute;
     top: 0;
@@ -29,13 +32,16 @@
 }
 .back-btn {
     position: absolute;
-    bottom: 10vh;
-    right: 10vw;
+    bottom: 5vh;
+    right: 5vw;
     background-color: transparent;
     border: none;
 }
 
 .home-link {
+    position: absolute;
+    top: 0;
+    right: 0;
     align-self: flex-end;
     margin: 30px;
 }

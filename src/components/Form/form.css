@@ -2,6 +2,7 @@
     height: 90vh;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to bottom, #f1f1f1, #1f1f1f);
 }
 .shoe-form {
     display: flex;
@@ -27,4 +28,16 @@
 .form-container a {
     color: blue;
     text-decoration: underline;
+}
+
+input[type="submit"] {
+    font-size: 1.5rem;
+    width: 50%;
+    margin: 5px auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }

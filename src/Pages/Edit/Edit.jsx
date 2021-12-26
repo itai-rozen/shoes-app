@@ -3,8 +3,8 @@ import './edit.css'
 
 export default class Edit {
     render(){
-        return <nav>
+        return <div>
             
-        </nav>
+        </div>
     }
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import shoeApi from './../../api'
 import { Link } from 'react-router-dom'
 import './form.css'
+import Spinner from '../Spinner/Spinner'
 
 export default class Form extends React.Component {
     state = { id:'',shoeName: '',description: '', price: '', shoeImg:'', error: '', isLoading: false, isSuccess: false }
@@ -27,14 +28,13 @@ export default class Form extends React.Component {
             return
         }
         try {
-            this.setState({isLoading:true})
             if (this.props.formAction === 'add'){
                 await shoeApi.addShoe({shoeName, description, price, shoeImg})
             } else {
                 await shoeApi.editShoe(id, {shoeName, description, price, shoeImg})
             }
             this.props.updateState()
-            this.setState({isLoading:false, isSuccess:true})
+            this.setState({ isSuccess:true})
         } catch (err) {
             this.setState({ error: err.message })
         }
@@ -51,7 +51,7 @@ export default class Form extends React.Component {
 
     render() { 
         if (this.state.error) return <h1 className='error-header'>{this.state.error}</h1>
-        else if (this.state.isLoading) return <h1>Loading...</h1>
+        else if (this.state.isLoading) return <Spinner />
         else return <div className='form-container'>
             <form className='shoe-form' onSubmit={this.submitForm}>
                 <label htmlFor="shoeName">Shoe Name</label>

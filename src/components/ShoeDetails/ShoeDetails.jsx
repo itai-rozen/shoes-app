@@ -1,18 +1,21 @@
 import React from 'react'
 import BackButton from '../BackButton/BackButton'
 import Form from '../Form/Form'
+import Spinner from '../Spinner/Spinner'
 import './shoeDetails.css'
 
 export default class ShoeDetails extends React.Component {
-    state = { currShoe : {}, isEdit:false }
+    state = { currShoe : {}, isEdit:false,isLoading:false}
     componentDidMount = () => {
         const shoe = this.props.shoes.find(shoe => shoe.id === this.props.id)
         this.setState({ currShoe: shoe , isEdit:false})
     }
     render() {
         const { shoeName, description, price, shoeImg } = this.state.currShoe
-        return <div className='shoe-details-container'>
+        {if (this.state.isLoading) return <Spinner />
+        else return <div className='shoe-details-container'>
                 <div className="home-link">
+                <button onClick={() => this.setState({isEdit: true})} className='edit-btn'>Edit</button>    
                     <BackButton />
                 </div>
             <div className="details">
@@ -26,13 +29,12 @@ export default class ShoeDetails extends React.Component {
                     <img src={shoeImg} alt="" />
                 </div>
                 </div>
-                    <button onClick={() => this.setState({isEdit: true})} className='edit-btn'>Edit</button>    
 
             </div>
             <div className="edit-form">
               {this.state.isEdit && <button className='back-btn' onClick={() => this.setState({isEdit:false})}> <i className="fas fa-sign-out-alt fa-2x"></i></button>}
-              {this.state.isEdit &&  <Form shoe={this.state.currShoe} updateState={this.props.updateState} formAction="edit" />} 
+              {this.state.isEdit &&  <Form  shoe={this.state.currShoe} updateState={this.props.updateState} formAction="edit" />} 
             </div>
         </div>
-    }
+    }}
 }
